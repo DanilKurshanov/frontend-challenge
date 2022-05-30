@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
+
+import NavigationComponent from "./routes/navigation/navigation.component";
+import HomeComponent from "./routes/home/home.component";
+import FavoriteCatsComponent from "./routes/favorite-cats/favorite-cats.component";
+
 import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes>
+          <Route path='/' element={<NavigationComponent />}>
+              <Route index element={<HomeComponent />} />
+              <Route path='favorite_cats' element={<FavoriteCatsComponent />} />
+          </Route>
+      </Routes>
   );
 }
 
