@@ -1,0 +1,35 @@
+.item {
+  position: relative;
+  width: 225px;
+  height: 225px;
+
+  button {
+    opacity: 0;
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    transition: opacity 300ms ease;
+  }
+
+  img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 25px;
+    transition: transform 300ms ease;
+    }
+
+  &:hover {
+
+    img {
+      transform: scale(1.14);
+      box-shadow: 0 6px 5px rgba(0, 0, 0, 0.24),
+      0 9px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    button {
+      opacity: 1;
+    }
+  }
+}
+
