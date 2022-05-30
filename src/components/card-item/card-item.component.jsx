@@ -1,19 +1,28 @@
+import {useContext} from "react";
+
+import {CardContext} from "../../context/card.context";
+
 import './card-item.styles.scss';
+
 
 const CardItemComponent = ({ data }) => {
     const { id, url } = data;
+
+    const { addItemToFavorite, deleteItemFromFavorite } = useContext(CardContext)
+    const addCatImageToFavorite = () => {
+        addItemToFavorite(data);
+    }
+
     return (
         <div className={'item'} key={id}>
             <img src={url} alt="image of cat"/>
-            {/*<button><span className={'like'}></span></button>*/}
-            <button>
+            <button onClick={addCatImageToFavorite}>
                 <svg
                     width="40"
                     height="37"
                     viewBox="0 0 40 37"
-                    // fill='none'
-                    fill-opacity="1"
-                    // xmlns="http://www.w3.org/2000/svg"
+                    fill='none'
+                    xmlns="http://www.w3.org/2000/svg"
                     className={'like'}>
                     <path
                         d="M29 0C25.52 0 22.18 1.62 20 4.18C17.82 1.62 14.48 0 11 0C4.84 0 0 4.84 0 11C0 18.56 6.8

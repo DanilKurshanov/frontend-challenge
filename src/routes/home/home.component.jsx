@@ -11,7 +11,9 @@ const HomeComponent = () => {
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
 
+    console.log('render')
     useEffect(() => {
+        console.log('effect')
         fetch('https://api.thecatapi.com/v1/images/search?limit=15', {
             headers: {
                 "Content-Type": "application/json",
