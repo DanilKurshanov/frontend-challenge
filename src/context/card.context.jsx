@@ -3,41 +3,44 @@ import {createContext, useState} from "react";
 
 export const CardContext = createContext({
     Items: [],
-    activeLike: false,
     addItemToFavorite: () => {},
     deleteItemFromFavorite: () => {},
 });
 
 function addCard(Items, cardToAdd) {
-    const existingCardItem = Items.find(
-        (cardItem) => cardItem.id === cardToAdd.id
-    );
+    cardToAdd = JSON.parse(cardToAdd)
 
+    const existingCardItem = Items.find((cardItem) => cardItem.id === cardToAdd.id);
+    console.log('addCard-existing', existingCardItem)
     if (existingCardItem) {
-        return [...Items]
+        return [...deleteCard(Items, cardToAdd)]
     }
 
-    return [...Items, {...cardToAdd, activeLike: true}];
+    return [...Items, {...cardToAdd}];
 }
 
-function deleteCard(Item, ItemToRemove) {
-    return Item.filter((e) => e.id !== ItemToRemove.id);
+function deleteCard(Items, ItemToRemove) {
+    const newArrItems = Items.filter((cardItem) => cardItem.id !== ItemToRemove.id)
+    console.log('deleteCard', newArrItems)
+    localStorage.removeItem(ItemToRemove.id)
+    return newArrItems;
 }
 
 export const CardProvider = ({children}) => {
 
-    const [Items, setItems] = useState([]);
+    const localStorageImages = Object.values({...localStorage}).map((item) => JSON.parse(item));
+    const [Items, setItems] = useState(localStorageImages);
 
 
     const addItemToFavorite = (cardToAdd) => {
         setItems(addCard(Items, cardToAdd));
     };
 
-    const deleteItemFromFavorite = (cartItemToRemove) => {
-        setItems(deleteCard(Items, cartItemToRemove));
-    };
+    // const deleteItemFromFavorite = (cartItemToRemove) => {
+    //     setItems(deleteCard(Items, cartItemToRemove));
+    // };
 
-    const value = {Items, addItemToFavorite, deleteItemFromFavorite};
+    const value = {Items, addItemToFavorite};
 
     return (
         <CardContext.Provider value={value}>{children}</CardContext.Provider>

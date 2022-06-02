@@ -8,10 +8,10 @@ const FavoriteCatsComponent = () => {
     const {Items} = useContext(CardContext);
 
     return (
-        <div className={'main-container'}>
+        <div className={'favorite-container'}>
             {Items.map((cardItem) => {
                 return (
-                    <CardItemComponent data={cardItem}/>
+                    <CardItemComponent data={cardItem} key={cardItem.id}/>
                 );
             })}
         </div>

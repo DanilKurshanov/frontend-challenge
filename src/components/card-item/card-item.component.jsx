@@ -5,18 +5,28 @@ import {CardContext} from "../../context/card.context";
 import './card-item.styles.scss';
 
 
-const CardItemComponent = ({ data }) => {
-    const { id, url } = data;
+const CardItemComponent = ({data}) => {
+    const {id, url} = data;
 
-    const { addItemToFavorite, deleteItemFromFavorite } = useContext(CardContext)
+    const {addItemToFavorite} = useContext(CardContext)
+
     const addCatImageToFavorite = () => {
-        addItemToFavorite(data);
+        if (localStorage.getItem(id)) {
+            addItemToFavorite(localStorage.getItem(id));
+        } else {
+            localStorage.setItem(id, JSON.stringify(data))
+            addItemToFavorite(localStorage.getItem(id));
+        }
     }
 
     return (
-        <div className={'item'} key={id}>
+        <div className={'item'}>
             <img src={url} alt="image of cat"/>
-            <button onClick={addCatImageToFavorite}>
+            <button onClick={() => {
+                addCatImageToFavorite();
+
+            }}
+                >
                 <svg
                     width="40"
                     height="37"
@@ -37,9 +47,3 @@ const CardItemComponent = ({ data }) => {
 }
 
 export default CardItemComponent;
-
-
-// //Clicked heart
-// <svg width="40" height="37" viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-// <path d="M20 36.7L17.1 34.06C6.8 24.72 0 18.56 0 11C0 4.84 4.84 0 11 0C14.48 0 17.82 1.62 20 4.18C22.18 1.62 25.52 0 29 0C35.16 0 40 4.84 40 11C40 18.56 33.2 24.72 22.9 34.08L20 36.7Z" fill="#FF3A00"/>
-// </svg>

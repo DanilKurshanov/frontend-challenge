@@ -11,9 +11,7 @@ const HomeComponent = () => {
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
 
-    console.log('render')
     useEffect(() => {
-        console.log('effect')
         fetch('https://api.thecatapi.com/v1/images/search?limit=15', {
             headers: {
                 "Content-Type": "application/json",
@@ -33,7 +31,7 @@ const HomeComponent = () => {
     } else {
         return (
             <div className={'main-container'}>
-                {items.map(item => (<CardItemComponent data={item} />))}
+                {items.map(item => (<CardItemComponent data={item} key={item.id}/>))}
             </div>
         );
     }
