@@ -1,0 +1,9 @@
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 55px;
+  grid-row-gap: 55px;
+  justify-items: center;
+  padding: 55px;
+}
