@@ -11,7 +11,7 @@ function addCard(Items, cardToAdd) {
     cardToAdd = JSON.parse(cardToAdd)
 
     const existingCardItem = Items.find((cardItem) => cardItem.id === cardToAdd.id);
-    console.log('addCard-existing', existingCardItem)
+
     if (existingCardItem) {
         return [...deleteCard(Items, cardToAdd)]
     }
