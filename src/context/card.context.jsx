@@ -21,7 +21,6 @@ function addCard(Items, cardToAdd) {
 
 function deleteCard(Items, ItemToRemove) {
     const newArrItems = Items.filter((cardItem) => cardItem.id !== ItemToRemove.id)
-    console.log('deleteCard', newArrItems)
     localStorage.removeItem(ItemToRemove.id)
     return newArrItems;
 }
