@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { CardProvider} from "./context/card.context";
-import {BrowserRouter} from "react-router-dom";
+import {CardProvider} from "./context/card.context";
+import {HashRouter} from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-        <BrowserRouter>
-            <CardProvider>
-                <App/>
-            </CardProvider>
-        </BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
+        <CardProvider>
+            <App/>
+        </CardProvider>
+    </HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

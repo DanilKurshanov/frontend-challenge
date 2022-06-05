@@ -1,4 +1,4 @@
-import { Routes, Route, HashRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import NavigationComponent from "./routes/navigation/navigation.component";
 import HomeComponent from "./routes/home/home.component";
@@ -9,14 +9,12 @@ import './App.css';
 
 function App() {
   return (
-      <HashRouter basename={process.env.PUBLIC_URL}>
           <Routes>
               <Route path='/' element={<NavigationComponent />}>
                   <Route index element={<HomeComponent />} />
                   <Route path='favorite_cats' element={<FavoriteCatsComponent />} />
               </Route>
           </Routes>
-      </HashRouter>
   );
 }
 
