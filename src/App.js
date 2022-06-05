@@ -10,7 +10,7 @@ import './App.css';
 function App() {
   return (
       <Routes>
-          <Route path='/' element={<NavigationComponent />}>
+          <Route path='frontend-challenge/' element={<NavigationComponent />}>
               <Route index element={<HomeComponent />} />
               <Route path='favorite_cats' element={<FavoriteCatsComponent />} />
           </Route>
