@@ -11,7 +11,7 @@ function App() {
   return (
       <HashRouter basename={process.env.PUBLIC_URL}>
           <Routes>
-              <Route path='frontend-challenge/' element={<NavigationComponent />}>
+              <Route path='/' element={<NavigationComponent />}>
                   <Route index element={<HomeComponent />} />
                   <Route path='favorite_cats' element={<FavoriteCatsComponent />} />
               </Route>
